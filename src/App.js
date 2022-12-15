@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from 'react-router-dom'
 
-function App() {
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Signup from './pages/Signup';
+import Account from './pages/Account.jsx'
+import ProtectAccount from './components/ProtectAccount';
+import Popular from './pages/Popular';
+import MovieShow from './pages/MovieShow';
+import MovieList from './pages/MovieList';
+import MovieDetails from "./pages/MovieDetails";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+    <Routes>
+      <Route exact path = '/' element = {<Home />} />
+      <Route exact path = '/login' element = {<Login />} />
+      <Route exact path = '/signup' element = {<Signup />} />
+      <Route path = '/movies' element = {<Popular />} />
+      <Route exact path = '/imdb' element = {<MovieShow />} />
+        <Route path=":genre" element={<MovieList />}></Route>
+        <Route path="/:genre/:movieId" element={<MovieDetails/>}></Route>
+      <Route exact path = '/my-list' element = {<ProtectAccount> <Account /> </ProtectAccount>} />
+    </Routes>      
+  </>
   );
 }
 

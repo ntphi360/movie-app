@@ -1,0 +1,216 @@
+:root {
+  --background: #141414;
+  --modal: #181818;
+  --white: #ffffff;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:0;
+  z-index:100;
+}
+
+.modal {
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px;
+  border-radius: 6px; 
+  background-color: var(--modal);
+  box-shadow: rgb(0 0 0 / 75%) 0px 3px 10px;
+  transition: opacity 0.2s linear;
+
+  .modal-header{
+    position: relative;
+   
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      content: "";
+      background: linear-gradient(0deg, var(--modal), transparent 50%);
+    }
+    img{
+      width: 100%;
+    }
+
+    .close {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 14px;
+      z-index: 2;
+      cursor: pointer;
+      background-color: var(--modal);
+      color: var(--white);
+      border-radius: 50%;
+      height: 36px;
+      padding: 8px;
+      width: 36px;
+      border: 0;
+
+      svg {
+        outline: none;
+      }
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding: 0 52px;
+      margin-bottom: 70px;
+      z-index: 2;
+
+      .header-title {
+        width: 100%;
+        
+        h1{
+          font-size: 30px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .header-buttons {
+          display: flex;
+          align-items: center;
+          position: relative;
+          width: 100%;
+          
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            cursor: pointer;
+            max-height: 42px;
+            min-height: 32px;
+            font-size: 16px;
+          }
+          
+          .play, .add {
+            margin-right: 10px;
+          }
+          
+          .play {        
+            appearance: none;
+            border: 0;
+            border-radius: 4px;
+            padding-left: 20;
+            padding-right: 24px;
+            background-color: var(--white);
+            color: var(--background);
+            font-weight: 700;
+            line-height: 24rem;
+            svg {
+              height: 100%;
+              width: 100%;
+              margin-right: 10px;
+            }
+          }
+          
+          .add{
+            max-width: 42px;
+            min-width: 32px;
+            background-color: rgba(42, 42, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-width: 2px;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
+            color: var(--white);
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal
+  .modal-header
+  .header-content
+  .header-title
+  .header-buttons
+:hover{
+  opacity: 0.9;
+}
+.modal .modal-header .header-content .header-title .header-buttons .add:hover {
+  border-color: var(--white);
+  background-color: rgba(42, 42, 42, 1);
+}
+
+.modal
+  .modal-header
+  .header-content
+  .header-title
+  .header-buttons:hover {
+  opacity: 1;
+}
+
+.modal .modal-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 10px;
+  padding: 15px 48px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visuallyhidden {
+  opacity: 0;
+}
+
+@media screen and (min-width: 1080px) {
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 768px) {
+  .modal .modal-header .header-content .header-title .header-buttons .add,
+  .modal .modal-header .header-content .header-title .header-buttons .rate,
+  .modal .modal-header .header-content .header-title .header-buttons .volume {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal .modal-header .header-content {
+    margin-bottom: 40px;
+  }
+
+  .modal .modal-header .header-content .header-title .header-buttons .play {
+    height: 32px;
+    font-size: 1.2rem;
+    padding-left: 1.5rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 688px) {
+  .modal .modal-body {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+
+  .modal .modal-body {
+    grid-row: 2;
+  }
+}
+
+@media screen and (max-width: 375px) {
+}
